@@ -1,7 +1,7 @@
 # ClusterNet
 
-This code implements and evaluates the ClusterNet method described in the NeurIPS 2019 [paper](https://arxiv.org/abs/1905.13732) "End to End Learning and Optimization on Graphs". ClusterNet provides a differentiable k-means clustering layer which is used as a building block for solving graph optimization problems. 
-
+This code implements the modified version of the ClusterNet method described in the NeurIPS 2019 [paper](https://arxiv.org/abs/1905.13732) "End to End Learning and Optimization on Graphs". ClusterNet provides a differentiable k-means clustering layer which is used as a building block for solving graph optimization problems. 
+)
 ```
 @inproceedings{wilder2019end,
   title={End to End Learning and Optimization on Graphs},
@@ -10,6 +10,8 @@ This code implements and evaluates the ClusterNet method described in the NeurIP
   year={2019}
 }
 ```
+
+The original code is cloned from [this](https://github.com/bwilder0/clusternet) repository
 
 # Files
 
@@ -40,25 +42,26 @@ The experiments_singlegraph.py and experiments_inductive.py scripts take a numbe
 * objective: this determines which optimization problem is used for the experiment. Use "--objective modularity" for the community detection task and "--objective kcenter" for the facility location task. 
 * dataset: which dataset to run on. For the datasets in the paper, which are included in this release, see the section below. Note that for experiments on the facility location problem, you should use the "datasetname_connected", which retains only the largest connected component to ensure that distances are well-defined. The only exception is the synthetic graphs, which are always connected. 
 * pure_opt: Add the flag "--pure_opt" to run experiments with no link prediction step, i.e., all methods observe the full graph. This is disabled by default.
+* graph_embedding: this determines the type of graph embedding layer we want to use for learning node representations.
 
 # Examples of running the experiments
 
 Example running the single-graph experiment for the community detection problem on the cora dataset:
 
 ```
-python experiments_singlegraph.py --objective modularity --hidden 50 --embed_dim 50 --weight_decay 5e-4 --dropout 0.2 --train_iters 1001 --clustertemp 50 --num_cluster_iter 1 --lr 0.01 --dataset cora
+python experiments_singlegraph.py --objective modularity --hidden 50 --embed_dim 50 --weight_decay 5e-4 --dropout 0.2 --train_iters 1001 --clustertemp 50 --num_cluster_iter 1 --lr 0.01 --dataset cora --graph_embedding GAT
 ```
 
 For the kcenter problem, make sure to use that corresponding "_connected" version of the graph, which keeps only the largest connected component so that distances are well-defined:
 
 ~~~
-python experiments_singlegraph.py --objective kcenter --hidden 50 --embed_dim 50 --weight_decay 5e-4 --dropout 0.2 --train_iters 1001 --clustertemp 30 --num_cluster_iter 1 --lr 0.01 --dataset cora_connected
+python experiments_singlegraph.py --objective kcenter --hidden 50 --embed_dim 50 --weight_decay 5e-4 --dropout 0.2 --train_iters 1001 --clustertemp 30 --num_cluster_iter 1 --lr 0.01 --dataset cora_connected --graph_embedding GAT
 ~~~
 
-The process is the same for the inductive experiments, e.g.,:
+The process is the same for the inductive experiments, e.g.,: 
 
 ~~~
-python experiments_inductive.py --objective modularity --hidden 50 --embed_dim 50 --weight_decay 5e-4 --dropout 0.2 --train_iters 220 --clustertemp 70 --num_cluster_iter 1 --lr 0.001 --dataset pubmed
+python experiments_inductive.py --objective modularity --hidden 50 --embed_dim 50 --weight_decay 5e-4 --dropout 0.2 --train_iters 220 --clustertemp 70 --num_cluster_iter 1 --lr 0.001 --dataset pubmed --graph_embedding GAT
 ~~~
 
 # Dependencies
@@ -71,4 +74,5 @@ The Dockerfile in the main directory builds the environment that was used to run
 * [pygcn](https://github.com/tkipf/pygcn/tree/master/pygcn)
 * sklearn (tested on version 0.21.3)
 * numpy (tested on version 1.16.5)
+* torch_geometric
 # ClusterNet_ML_Project
