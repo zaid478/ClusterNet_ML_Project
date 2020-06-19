@@ -1,6 +1,6 @@
 # ClusterNet
 
-This code implements the modified version of the ClusterNet method described in the NeurIPS 2019 [paper](https://arxiv.org/abs/1905.13732) "End to End Learning and Optimization on Graphs". ClusterNet provides a differentiable k-means clustering layer which is used as a building block for solving graph optimization problems. 
+This code implements the modified version of the ClusterNet method described in the NeurIPS 2019 paper [End to End Learning and Optimization on Graphs] (https://arxiv.org/abs/1905.13732). ClusterNet provides a differentiable k-means clustering layer which is used as a building block for solving graph optimization problems. 
 )
 ```
 @inproceedings{wilder2019end,
