@@ -1,4 +1,4 @@
-# ClusterNet
+# ClusterNet modification for Course Project
 
 This code implements the modified version of the ClusterNet method described in the NeurIPS 2019 paper [End to End Learning and Optimization on Graphs] (https://arxiv.org/abs/1905.13732). ClusterNet provides a differentiable k-means clustering layer which is used as a building block for solving graph optimization problems. 
 )
@@ -75,4 +75,3 @@ The Dockerfile in the main directory builds the environment that was used to run
 * sklearn (tested on version 0.21.3)
 * numpy (tested on version 1.16.5)
 * torch_geometric
-# ClusterNet_ML_Project
