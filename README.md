@@ -25,6 +25,8 @@ The original code is cloned from [this](https://github.com/bwilder0/clusternet) 
 
 # Datasets
 
+## Make sure to download the datasets from the original repository
+
 Included are the datasets used to run the experiments in the paper. Here are the mappings between the filenames (which can be used as the --dataset argument to the code) and the names of the datasets in the paper:
 
 * cora: the [cora](https://relational.fit.cvut.cz/dataset/CORA) dataset (cora)
